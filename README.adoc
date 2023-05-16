@@ -1,0 +1,159 @@
+= Starship Config
+Jordan Williams <jordan@jwillikers.com>
+:experimental:
+:icons: font
+ifdef::env-github[]
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+:Fedora: https://fedoraproject.org/[Fedora]
+:fish: https://fishshell.com/[fish]
+:Nerd-Fonts: https://www.nerdfonts.com/[Nerd Fonts]
+:Noto: https://notofonts.github.io/[Noto]
+:Nushell: https://nushell.sh/[Nushell]
+:Starship: https://starship.rs/[Starship]
+
+My configuration for {Starship}, the minimal, blazing-fast, and infinitely customizable prompt for any shell!
+
+== Usage
+
+This repository contains the configuration files for {Starship}, which I use for both {fish} and {Nushell}.
+This file is synchronized using this Git repository.
+The following instructions detail how to use and sync this repository.
+
+=== Prerequisites
+
+{Nerd-Fonts} are required for this configuration.
+I use the patched {Noto} fonts.
+Noto Sans is the default font used in {Fedora} Linux.
+Follow these steps to install the patched Noto fonts.
+
+. Create the `~/.local/share/fonts` directory.
++
+[,sh]
+----
+mkdir -p ~/.local/share/fonts
+----
+
+. Download the Noto fonts tarball.
++
+[,sh]
+----
+curl -fLO https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.1/Noto.tar.xz
+----
+
+. Extract the tarball's contents to the fonts directory.
++
+[,sh]
+----
+tar --directory ~/.local/share/fonts -xf Noto.tar.xz
+----
+
+. Clean up the lingering tarball.
++
+[,sh]
+----
+rm Noto.tar.xz
+---- 
+
+=== Install
+
+Install these settings with the following instructions.
+
+. Add the `starship` COPR repository to your system.
++
+[,sh]
+----
+curl -L https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora/atim-starship-fedora.repo \
+  | sudo tee /etc/yum.repos.d/atim-starship-fedora.repo
+----
+
+. Install the `starship` package.
++
+[,sh]
+----
+sudo rpm-ostree install starship
+----
+
+. Reboot to complete the installation.
++
+[,sh]
+----
+sudo systemctl reboot
+----
+
+. Clone this repository.
++
+[,sh]
+----
+git -C ~/Projects clone git@github.com:jwillikers/starship-config.git
+----
+
+. Copy the configuration file to the `~/.config/` directory.
++
+[,sh]
+----
+cp ~/Projects/starship-config/starship.toml ~/.config/
+----
+
+. Follow the install instructions in the https://github.com/jwillikers/fish-config[fish config repository] and https://github.com/jwillikers/nushell-config[Nushell config repository] to enable Starship.
+For other shells, refer to the https://starship.rs/guide/#%F0%9F%9A%80-installation[Starship Installation instructions].
+
+=== Update
+
+To update the settings in this repository from an existing installation, follow these steps.
+
+. If you haven't already done so, clone this repository.
++
+[,sh]
+----
+git -C ~/Projects clone git@github.com:jwillikers/starship-config.git
+----
+
+. Copy the configuration files to this repository.
++
+[,sh]
+----
+cp ~/.config/starship.toml ~/Projects/starship-config/
+----
+
+. Stage the updated file.
++
+[,sh]
+----
+git -C ~/Projects/starship-config add -A
+----
+
+. Commit.
++
+[,sh]
+----
+git -C ~/Projects/starship-config commit -m "Update configuration putting all others to shame"
+----
+
+. Push the changes back to the central repository.
++
+[,sh]
+----
+git -C ~/Projects/starship-config push
+----
+
+== Code of Conduct
+
+Please refer to the project's link:CODE_OF_CONDUCT.adoc[Code of Conduct].
+
+== License
+
+This repository is licensed under the https://www.gnu.org/licenses/gpl-3.0.html[GPLv3].
+Please refer to the bundled link:LICENSE.adoc[license].
+
+== Copyright
+
+© 2023 Jordan Williams
+
+== Authors
+
+mailto:{email}[{author}]
