@@ -35,14 +35,14 @@ Follow these steps to install the patched Noto fonts.
 +
 [,sh]
 ----
-mkdir -p ~/.local/share/fonts
+mkdir --parents ~/.local/share/fonts
 ----
 
 . Download the Noto fonts tarball.
 +
 [,sh]
 ----
-curl -fLO https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.1/Noto.tar.xz
+curl --fail --location --remote-name https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/Noto.tar.xz
 ----
 
 . Extract the tarball's contents to the fonts directory.
@@ -96,50 +96,11 @@ git -C ~/Projects clone git@github.com:jwillikers/starship-config.git
 +
 [,sh]
 ----
-cp ~/Projects/starship-config/starship.toml ~/.config/
+ln --relative --symbolic --force ~/Projects/starship-config/starship.toml ~/.config/
 ----
 
 . Follow the install instructions in the https://github.com/jwillikers/fish-config[fish config repository] and https://github.com/jwillikers/nushell-config[Nushell config repository] to enable Starship.
 For other shells, refer to the https://starship.rs/guide/#%F0%9F%9A%80-installation[Starship Installation instructions].
-
-=== Update
-
-To update the settings in this repository from an existing installation, follow these steps.
-
-. If you haven't already done so, clone this repository.
-+
-[,sh]
-----
-git -C ~/Projects clone git@github.com:jwillikers/starship-config.git
-----
-
-. Copy the configuration files to this repository.
-+
-[,sh]
-----
-cp ~/.config/starship.toml ~/Projects/starship-config/
-----
-
-. Stage the updated file.
-+
-[,sh]
-----
-git -C ~/Projects/starship-config add -A
-----
-
-. Commit.
-+
-[,sh]
-----
-git -C ~/Projects/starship-config commit -m "Update configuration putting all others to shame"
-----
-
-. Push the changes back to the central repository.
-+
-[,sh]
-----
-git -C ~/Projects/starship-config push
-----
 
 == Code of Conduct
 
@@ -152,7 +113,7 @@ Please refer to the bundled link:LICENSE.adoc[license].
 
 == Copyright
 
-© 2023 Jordan Williams
+© 2023-2024 Jordan Williams
 
 == Authors
 
