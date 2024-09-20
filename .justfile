@@ -21,5 +21,9 @@ install:
             echo "Reboot to finish installation."
         fi
     fi
+    mkdir --parents ~/.local/share/fonts
+    curl --fail --location --remote-name https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/Noto.tar.xz
+    tar --directory ~/.local/share/fonts --extract --file Noto.tar.xz
+    rm Noto.tar.xz
     mkdir --parents "{{ config_directory() }}"
     ln --force --relative --symbolic starship.toml "{{ config_directory() }}/starship.toml"
